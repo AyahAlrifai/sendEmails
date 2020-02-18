@@ -1,5 +1,4 @@
-
-password =""
+password =input("Enter your password: ")
 import openpyxl
 import smtplib, ssl
 from email.mime.text import MIMEText
@@ -7,37 +6,26 @@ from email.mime.multipart import MIMEMultipart
 
 wb=openpyxl.load_workbook("ex.xlsx")
 s=wb["sheet1"]
-data=s['A':'C']
-
+data=s['A']
 sender_email = "alrefayayah@gmail.com"
-names=data[0]
-grades=data[1]
-emails=data[2]
+message = MIMEMultipart("alternative")
+message["Subject"] = input("Enter subject: ")
+mesgConant=input("Enter message: ")
 
-for i in range(len(names)):
-    if grades[i].value>=3.75:
-        emoji="&#x1F600;"
-    else:
-        emoji="&#x1F622;"
-    receiver_email = emails[i].value
-    message = MIMEMultipart("alternative")
-    message["Subject"] = "your grade"
+for i in range(len(data)):
+    receiver_email = data[i].value
     message["From"] = sender_email
     message["To"] = receiver_email
     message["Bcc"] = receiver_email
     html = """\
     <html>
       <body>
-        <h3 style="color:red;background-color:green">
-        Hi """+names[i].value+"""<br>
-        your grade is """+str(grades[i].value)+emoji+"""<br>
-        good lock!<br>
-        Ayah Al-refai
+        <h3 style="color:green;">"""+mesgConant+"""
         </h3>
+	<b style="color:red;">Best Regards<br>Eng.Ayah Alrifai</b>
       </body>
     </html>
     """
-
     part = MIMEText(html, "html")
     message.attach(part)
 
