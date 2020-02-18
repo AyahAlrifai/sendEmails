@@ -1,5 +1,5 @@
 
-password ="HaYa.IaFiRlA.97"
+password =""
 import openpyxl
 import smtplib, ssl
 from email.mime.text import MIMEText
