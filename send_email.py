@@ -1,4 +1,3 @@
-password =input("Enter your password: ")
 import openpyxl
 import smtplib, ssl
 from email.mime.text import MIMEText
@@ -7,7 +6,8 @@ from email.mime.multipart import MIMEMultipart
 wb=openpyxl.load_workbook("ex.xlsx")
 s=wb["sheet1"]
 data=s['A']
-sender_email = "alrefayayah@gmail.com"
+sender_email = input("Enter your Gmail: ")
+password =input("Enter your password: ")
 message = MIMEMultipart("alternative")
 message["Subject"] = input("Enter subject: ")
 mesgConant=input("Enter message: ")
